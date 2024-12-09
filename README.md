@@ -1,0 +1,1 @@
+A travel and tour website developed during my internship at the Ministry of Innovation and Technology, Ethiopia. This platform promotes tourism by providing information on attractions, travel options, and services across the country, featuring user-friendly navigation and a responsive design for an enhanced travel experience.
