@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Details</title>
+  <style>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .map {
+      width: 100%;
+      height: 400px;
+      margin-bottom: 20px;
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .location {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+  </style>
+  <!-- swiper css link -->
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+
+  <!-- font awesome cnd link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+ <!-- custom css file link -->
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+  <!--header section starts -->
+
+  <section class="header">
+
+    <img style="margin-left: 36px;  border-radius: 50%;" src="image/image.png" alt="Mint Company Logo" class="log">
+
+    <nav class="navbar">
+
+      <a href="package.php">package</a>
+      <a href="book.php">book</a>
+      <a href="home.php">Signout</a>
+    </nav>
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+  </section>
+  <!-- header section ends -->
+   <!-- header section ends -->
+
+  <div class="" style = "margin-left: 300px;">
+    <h1>more detail</h1>
+  </div>
+
+  <!--packages section starts-->
+  <div class="container">
+    <div class="map">
+      <iframe id="property-map" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+    <div class="details">
+      <div class="location">
+        <span>Location:</span>
+        <span id="property-location"></span>
+      </div>
+      <div class="price">
+        <span>price:</span>
+        <span id="property-price"></span>
+      </div>
+    </div>
+    <div class="actions">
+      <a href="book.php" class="btn">Book Now</a>
+      <a href="package.php" class="btn">Back to Listings</a>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const propertyIndex = parseInt(urlParams.get('index'));
+
+    const properties = [
+      {
+        location: "Gondor, Amahara",
+        price: "$450,000",
+        map:  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3425.8019294572596!2d-118.11934878487334!3d34.10500208059441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2s456%20Oak%20Ave%2C%20Anothertown%2C%20CA%2091101%2C%20USA!5e0!3m2!1sen!2s!4v1676286520000!5m2!1sen!2s",
+    
+        },
+      {
+        location: "Bale, Oromia",
+        price: "$325,000",
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3425.8019294572596!2d-118.11934878487334!3d34.10500208059441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2s456%20Oak%20Ave%2C%20Anothertown%2C%20CA%2091101%2C%20USA!5e0!3m2!1sen!2s!4v1676286520000!5m2!1sen!2s"
+        
+      },
+      {
+        location: "123 Main Street, Anytown USA",
+        price: "$450,000",
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.5917996771425!2d-73.98565268467392!3d40.75840617932499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2s123%20Main%20St%2C%20New%20York%2C%20NY%2010001%2C%20USA!5e0!3m2!1sen!2s!4v1676286400000!5m2!1sen!2s"
+      },
+      {
+        location: "456 Oak Avenue, Anothertown CA",
+        price: "$325,000",
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3425.8019294572596!2d-118.11934878487334!3d34.10500208059441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2s456%20Oak%20Ave%2C%20Anothertown%2C%20CA%2091101%2C%20USA!5e0!3m2!1sen!2s!4v1676286520000!5m2!1sen!2s"
+      }
+    ];
+
+    const propertyLocation = document.getElementById('property-location');
+    const propertyPrice = document.getElementById('property-price');
+    const propertyMap = document.getElementById('property-map');
+
+    propertyLocation.textContent = properties[propertyIndex].location;
+    propertyPrice.textContent = properties[propertyIndex].price;
+    propertyMap.src = properties[propertyIndex].map;
+  </script>
+<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.785086566903!2d39.99742507418287!3d9.083333290980164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164a756356c51cf1%3A0xae9bde25595552f8!2sAwash%20National%20Park!5e0!3m2!1sen!2set!4v1724237455417!5m2!1sen!2set" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+  <!--footer section starts -->
+
+  <section class="footer">
+    <div class="box-container">
+      
+      <div class="box">
+        <h3>quick links</h3>
+        <a href="home.php"> <i class="fas fa-angle-right"></i>home</a>
+        <a href="about.php"> <i class="fas fa-angle-right"></i>about</a>
+        <a href="package.php"> <i class="fas fa-angle-right"></i>package</a>
+        <a href="book.php"> <i class="fas fa-angle-right"></i>book</a>
+      </div>
+
+
+      <div class="box">
+      <h3>extra links</h3>
+      <a href="#"> <i class="fas fa-angle-right"></i>ask question</a>
+      <a href="#"> <i class="fas fa-angle-right"></i>about us </a>
+      <a href="#"> <i class="fas fa-angle-right"></i>privacy policy</a>
+      <a href="#"> <i class="fas fa-angle-right"></i>terms of use</a>
+      
+      </div>
+
+
+      <div class="box">
+      <h3>contacts info</h3>
+      <a href="#"> <i class="fas fa-phone"></i>+123-456-7890</a>
+      <a href="#"> <i class="fas fa-phone"></i>+111-222-3333 </a>
+      <a href="#"> <i class="fas fa-envelope"></i>bonyd@gmail.com</a>
+      <a href="#"> <i class="fas fa-map"></i>Ethiopia</a>
+      
+      </div>
+
+      <div class="box">
+        <h3>follow us</h3>
+        <a href="#"> <i class="fab fa-facebook-f"></i>facebook</a>
+        <a href="#"> <i class="fab fa-twitter"></i>twitter</a>
+        <a href="#"> <i class="fab fa-instagram"></i>instagram</a>
+        <a href="#"> <i class="fab fa-linkedin"></i>linkedin</a>
+      </div>
+    </div>
+
+    <div class="credit">created by <span>2024 MINT</span> | all rights reserved! </div>
+  </section>
+  <!--footer section ends -->
+
+
+  <!-- swiper js link -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+  <!-- custom js file link -->
+   <script src="js/script.js"></script>
+
+</body>
+</html>
